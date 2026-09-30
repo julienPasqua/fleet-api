@@ -21,15 +21,31 @@ jobs:
       - name: Lancer le lint
         run: uv run ruff check .
 
+      - name: Lancer le lint de formatage
+        run: uv run ruff format --check .
+
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v7
 
       - name: Installer uv
         uses: astral-sh/setup-uv@v10.0.1
+
+      - name: utilisé le cahe uv
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/uv
+          key: ${{ runner.os }}-uv-${{ hashFiles('**/uv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-
 
       - name: Installer les dépendances
         run: uv sync
@@ -53,4 +69,9 @@ jobs:
       - name: Lancer le build
         run: uv build
 
-        
+      - name: Sauvegarder le build
+        uses: actions/upload-artifact@v7
+        with:
+          name: distribution
+          path: dist/
+          retention-days: 7

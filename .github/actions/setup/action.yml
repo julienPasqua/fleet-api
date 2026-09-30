@@ -1,0 +1,14 @@
+name: Setup uv et dépendances
+description: installé uv et les dépendances du projet
+
+runs:
+  using: composite
+
+  steps:
+    - name: Installer uv
+      uses: astral-sh/setup-uv@v10.0.1
+
+    - name: Installer les dépendances
+
+      run: uv sync
+      shell: bash

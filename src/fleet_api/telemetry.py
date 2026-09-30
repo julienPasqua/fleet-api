@@ -195,7 +195,7 @@ def median_voltage_mv(readings: list[Reading]) -> float | None:
     """
     # TODO: à tester
     if not readings:
-        return  None
+        return None
     return median(r.voltage_mv for r in readings)
 
 

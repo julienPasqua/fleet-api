@@ -72,42 +72,38 @@ def test_battery_percentage_rejette_des_bornes_incoherentes():
 # Trois de ces fonctions ne respectent pas leur spécification.
 # ---------------------------------------------------------------------------
 
+
 def test_is_low_battery():
-    
+
     assert is_low_battery(10.0) is True
     assert is_low_battery(20.0) is True
-    assert is_low_battery(20.1) is False    
-
+    assert is_low_battery(20.1) is False
 
 
 def test_path_length_m():
-   
-    
+
     positions = [Position(0, 0), Position(3, 4), Position(6, 0)]
     assert path_length_m(positions) == pytest.approx(10.0)
-    
-    
+
     positions = [Position(1, 1)]
     assert path_length_m(positions) == pytest.approx(0.0)
-    
-    
+
     positions = [Position(1, 1), Position(4, 5)]
     assert path_length_m(positions) == pytest.approx(5.0)
-    
-   
+
     positions = [Position(2, 2), Position(2, 2), Position(2, 2)]
     assert path_length_m(positions) == pytest.approx(0.0)
 
 
 def test_average_speed_mps():
-   
+
     assert average_speed_mps(10.0, 5.0) == pytest.approx(2.0)
     assert average_speed_mps(10.0, 0.0) is None
     assert average_speed_mps(10.0, -5.0) is None
 
 
 def test_estimate_runtime_minutes():
-   
+
     assert estimate_runtime_minutes(50.0, 5.0) == pytest.approx(10.0)
     assert estimate_runtime_minutes(100.0, 10.0) == pytest.approx(10.0)
     assert estimate_runtime_minutes(0.0, 5.0) == pytest.approx(0.0)
@@ -153,10 +149,9 @@ def test_robot_state():
         "R1",
         1000.0,
         12_600,
-        Position(0,0),
+        Position(0, 0),
         False,
     )
-    
 
     assert robot_state(reading, 1050.0) == RobotState.OPERATIONAL
     assert robot_state(reading_low_battery, 1050.0) == RobotState.LOW_BATTERY
@@ -180,5 +175,3 @@ def test_fleet_summary():
             1,
         )
     )
-
-

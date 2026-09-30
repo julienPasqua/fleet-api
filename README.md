@@ -2,7 +2,7 @@
 
 Mini-service de supervision d'une flotte de robots d'entrepôt.
 
-Ce dépôt est le **fil rouge** du module *Usine Logicielle et CI/CD* (ESIA A3). Vous
+Ce dépôt est le **fil rouge** du module _Usine Logicielle et CI/CD_ (ESIA A3). Vous
 allez le faire grossir séance après séance jusqu'à disposer d'une chaîne
 d'intégration et de déploiement complète.
 
@@ -50,7 +50,7 @@ tests/
    docstring pour la faire coller à l'implémentation.
 2. **On travaille par pull request.** À partir de la séance 2, `main` est
    protégée : plus de push direct.
-3. **Un commit, une intention.** Le message dit *pourquoi*, pas *quoi* — le diff
+3. **Un commit, une intention.** Le message dit _pourquoi_, pas _quoi_ — le diff
    dit déjà quoi.
 
 ## Backlog
@@ -68,13 +68,15 @@ testées et bien intégrées que six bâclées.
 
 ## Progression du module
 
-| Séance | Ce que vous ajoutez |
-|---|---|
-| 1 | Les tests manquants, un premier workflow |
-| 2 | Pipeline lint / test / build, protection de `main` |
-| 3 | Workflow réutilisable, pre-commit, Dependabot |
-| 4 | Dockerfile multi-stage, docker compose |
-| 5 | Build et publication d'image sur GHCR, scan de vulnérabilités |
-| 6 | Couverture, typage, analyse statique, quality gate |
-| 7 | Release versionnée, environnements, bascule et retour arrière |
-| 8 | Revue croisée, finalisation |
+| Séance | Ce que vous ajoutez                                           |
+| ------ | ------------------------------------------------------------- |
+| 1      | Les tests manquants, un premier workflow                      |
+| 2      | Pipeline lint / test / build, protection de `main`            |
+| 3      | Workflow réutilisable, pre-commit, Dependabot                 |
+| 4      | Dockerfile multi-stage, docker compose                        |
+| 5      | Build et publication d'image sur GHCR, scan de vulnérabilités |
+| 6      | Couverture, typage, analyse statique, quality gate            |
+| 7      | Release versionnée, environnements, bascule et retour arrière |
+| 8      | Revue croisée, finalisation                                   |
+
+Test de pull request CI

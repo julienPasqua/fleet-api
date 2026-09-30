@@ -51,8 +51,8 @@ jobs:
       - name: Installer les dépendances
         run: uv sync
 
-      - name: Lancer les tests
-        run: uv run pytest -v
+      - name: Lancer les tests et les couverture de code 
+        run: uv run pytest -v --cov=fleet_api --cov-report=html
 
   build:
     name: Build

@@ -17,11 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Installer uv
-        uses: astral-sh/setup-uv@v10.0.1
-
-      - name: Installer les dépendances
-        run: uv sync
+      - name: préparer l'environnement
+        uses: ./.github/actions/setup
 
       - name: Lancer le lint
         run: uv run ruff check .
@@ -42,22 +39,15 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Installer uv
-        uses: astral-sh/setup-uv@v10.0.1
-
-      - name: utilisé le cahe uv
-        uses: actions/cache@v3
+      - uses: actions/setup-python@v7
         with:
-          path: ~/.cache/uv
-          key: ${{ runner.os }}-uv-${{ hashFiles('**/uv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-uv-
+          python-version: ${{ matrix.python-version }}
 
-      - name: Installer les dépendances
-        run: uv sync
+      - name: Préparer l'environnement
+        uses: ./.github/actions/setup
 
-      - name: Lancer les tests
-        run: uv run pytest -v
+      - name: Lancer les tests et les couverture de code
+        run: uv run pytest -v --cov=fleet_api --cov-report=html
 
   build:
     name: Build
@@ -66,11 +56,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Installer uv
-        uses: astral-sh/setup-uv@v10.0.1
-
-      - name: Installer les dépendances
-        run: uv sync
+      - name: préparer l'environnement
+        uses: ./.github/actions/setup
 
       - name: Lancer le build
         run: uv build

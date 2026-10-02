@@ -25,7 +25,9 @@ jobs:
         id: meta
         with:
           images: ghcr.io/${{ github.repository }}
-          tags: type=sha,format=long
+          tags: |
+
+            type=sha,format=long
             type=ref,format=short
             type=semver,pattern={{version}}
             type=semver,pattern={{version}}-{{pre}}

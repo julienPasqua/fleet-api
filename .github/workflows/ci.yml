@@ -46,7 +46,7 @@ jobs:
         uses: astral-sh/setup-uv@v10.0.1
 
       - name: utilisé le cahe uv
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: ~/.cache/uv
           key: ${{ runner.os }}-uv-${{ hashFiles('**/uv.lock') }}

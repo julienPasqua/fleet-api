@@ -26,12 +26,11 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-
             type=sha,format=long
-            type=ref,format=short
+            type=ref,event=branch
+            type=ref,event=pr
             type=semver,pattern={{version}}
-            type=semver,pattern={{version}}-{{pre}}
-            type=raw, value=latest, enabled={{ it's default branch }}
+            type=raw, value=latest, enabled={{ it's_default_branch }}
 
       - uses: docker/build-push-action@v7
         with:
